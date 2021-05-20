@@ -11,6 +11,19 @@
   </head>
 
   <body>
+  <header>
+    <br />
+    <br />
+    <% if user_signed_in? %>
+      <%= current_user.username %> |
+      <%= link_to "Log out", destroy_user_session_path,
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+    <% else %>
+    <%= link_to "Log in", new_user_session_path %>
+    <% end %>
+  </header>
+
   <p id="notice"><%= notice %></p>
   <p id="alert"><%= alert %></p>
 

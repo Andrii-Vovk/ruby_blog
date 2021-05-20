@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :set_post, only: %i[show edit update destroy]
+
   def index
     @articles = Article.all
   end
@@ -13,6 +16,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+
+    @article.author = current_user
 
     respond_to do |format|
       if @article.save
@@ -56,5 +61,9 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title, :body, :status)
+    end
+
+    def set_post 
+      @article = Article.find(params[:id])
     end
 end
