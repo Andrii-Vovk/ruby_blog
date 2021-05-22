@@ -15,6 +15,11 @@
     <% end %>
   </div>
 
+  <div> 
+  <%= form.label "Header photo" %>
+  <%= form.file_field :top_photo%>
+  </div>
+
   <div>
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'archived']%>

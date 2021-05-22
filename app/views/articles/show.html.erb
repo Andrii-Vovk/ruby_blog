@@ -11,6 +11,11 @@
 
 <hr />
 <h1><%= @article.title %></h1>
+<div>
+  <% if @article.top_photo.attached?%>
+    <img src="<%= url_for(@article.top_photo)%>">
+  <% end %>
+</div>
 <p><small><strong>Author:</strong> <%= @article.author.username %> </small> </p>
 <p><%= @article.body %></p>
 <hr />

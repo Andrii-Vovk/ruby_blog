@@ -21,7 +21,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     @article.author = current_user
-
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: "Article succesfully created." }
@@ -39,6 +38,9 @@ class ArticlesController < ApplicationController
 
   def update
     authorize @article
+
+    #@article.top_photo.attach(params[:top_photo])
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: "Article succesfully updated." }
@@ -62,7 +64,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      params.require(:article).permit(:title, :body, :status, :top_photo)
     end
 
     def set_post 
