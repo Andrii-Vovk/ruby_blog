@@ -3,17 +3,21 @@ class ArticlesController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.ordered.including_authors
+    authorize Article
+    @articles = Article.article_status('public').ordered.including_authors
   end
 
   def show
+    authorize @article
   end
 
   def new
+    authorize Article
     @article = Article.new
   end
 
   def create
+    authorize Article
     @article = Article.new(article_params)
 
     @article.author = current_user
@@ -30,10 +34,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    authorize @article
   end
 
   def update
-
+    authorize @article
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: "Article succesfully updated." }
@@ -46,6 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    authorize @article
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article succesfully destroyed." }

@@ -3,20 +3,19 @@
 <div>
 Our blog has <%= Article.public_count %> articles and counting!
 </div>
-
-<ul>
+ <hr />
   <% @articles.each do |article| %>
-    <li>
     <%= link_to article.title, article %>
     <br />
     <%= article.body[0..150].gsub(/\s\w+\s*$/, '...') %>
     <br />
-    <%= link_to "Edit", edit_article_path(article) %> |
-    <%= link_to "Destroy", article_path(article),
+    <% if policy(article).update? %>
+      <%= link_to "Edit", edit_article_path(article) %> |
+      <%= link_to "Destroy", article_path(article),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
-    </li>
+    <% end %>
+    <hr />
   <% end %>
 
   <%= link_to "New Article", new_article_path %>
-</ul>
