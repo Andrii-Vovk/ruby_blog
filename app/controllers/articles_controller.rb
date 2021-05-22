@@ -3,11 +3,10 @@ class ArticlesController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.ordered.including_authors
   end
 
   def show
-    @article = Article.find(params[:id])
   end
 
   def new
@@ -31,11 +30,9 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
 
     respond_to do |format|
       if @article.update(article_params)
@@ -49,7 +46,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: "Article succesfully destroyed." }
