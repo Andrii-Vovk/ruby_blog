@@ -1,7 +1,7 @@
 <% unless comment.body == nil %>
 <p>
   <strong>Commenter:</strong>
-  <%= comment.commenter %>
+  <%= comment.author.username %>
 </p>
 
 <p>
@@ -15,5 +15,4 @@
               data: { confirm: "Are you sure?" } %>
 </p>
 
-<%= comment.body.inspect %>
 <% end %>
