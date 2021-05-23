@@ -59,3 +59,5 @@ gem 'activestorage-validator'
 gem 'devise'
 gem 'pagy'
 gem 'pundit'
+
+gem 'aws-sdk-s3'
