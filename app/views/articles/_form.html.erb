@@ -15,9 +15,20 @@
     <% end %>
   </div>
 
+  <div>
+    <%= form.label :tag %><br>
+    <%= form.text_field :tag %>
+    <% article.errors.full_messages_for(:tag).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
   <div> 
   <%= form.label "Header photo" %>
   <%= form.file_field :top_photo%>
+  <% article.errors.full_messages_for(:top_photo).each do |message| %>
+      <div><%= message %></div>
+  <% end %>
   </div>
 
   <div>

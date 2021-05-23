@@ -2,6 +2,8 @@
   <% articles.each do |article| %>
     <%= link_to article.title, article %>
     <br />
+    <small> <i> #<%= article.tag %> </i> </small>
+    <br />
     <%= article.body[0..150].gsub(/\s\w+\s*$/, '...') %>
     <br />
     <% if policy(article).update? %>

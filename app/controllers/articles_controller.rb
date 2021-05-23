@@ -6,7 +6,14 @@ class ArticlesController < ApplicationController
     authorize Article
     @articles = Article.article_status('public').ordered.including_authors
   
-    @articles = @articles.where('title LIKE ?', "#{params[:query]}%")
+
+    if params[:query].present?
+      @articles = @articles.search(params[:query])
+    end
+
+    if params[:tquery].present?
+      @articles = @articles.tag_filter(params[:tquery])
+    end
   end
 
   def show
@@ -71,7 +78,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status, :top_photo)
+    params.require(:article).permit(:title, :body, :status, :top_photo, :tag)
     end
 
     def set_post 

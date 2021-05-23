@@ -11,6 +11,8 @@
 
 <hr />
 <h1><%= @article.title %></h1>
+<small> <i> #<%= @article.tag %> </i> </small>
+
 <div>
   <% if @article.top_photo.attached?%>
     <img src="<%= url_for(@article.top_photo)%>">

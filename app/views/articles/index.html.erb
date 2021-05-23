@@ -16,6 +16,12 @@ Our blog has <%= Article.public_count %> articles and counting!
   <%= form.text_field :query %>
   <%= form.submit "Search" %>
 <% end %>
+
+<%= form_with method: :get do |form| %>
+  <%= form.label :tag_query, "Filter by tag:" %>
+  <%= form.text_field :tag_query %>
+  <%= form.submit "Filter" %>
+<% end %>
  
 <%= render 'articles', articles: @articles %>
 
