@@ -25,4 +25,5 @@ Our blog has <%= Article.public_count %> articles and counting!
  
 <%= render 'articles', articles: @articles %>
 
+<%== pagy_bootstrap_nav(@pagy)%>
 

@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
     if params[:tquery].present?
       @articles = @articles.tag_filter(params[:tquery])
     end
+
+    @pagy, @articles = pagy(@articles)
   end
 
   def show
