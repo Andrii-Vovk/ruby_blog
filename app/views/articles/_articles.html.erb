@@ -1,0 +1,14 @@
+ <hr />
+  <% articles.each do |article| %>
+    <%= link_to article.title, article %>
+    <br />
+    <%= article.body[0..150].gsub(/\s\w+\s*$/, '...') %>
+    <br />
+    <% if policy(article).update? %>
+      <%= link_to "Edit", edit_article_path(article) %> |
+      <%= link_to "Destroy", article_path(article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <hr />
+  <% end %>

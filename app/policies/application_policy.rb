@@ -46,4 +46,16 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  private 
+
+  def admin?
+    return false unless user
+
+    user.admin?
+  end
+
+  def user_logged_in?
+    !!user
+  end
 end

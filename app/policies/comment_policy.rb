@@ -1,7 +1,7 @@
 class CommentPolicy < ApplicationPolicy
 
     def destroy?
-        comment_author?
+        comment_author? || admin?
     end
 
     def create?

@@ -2,17 +2,25 @@ class ArticlePolicy < ApplicationPolicy
     def index?
         true
     end
+
+    def archived?
+        user_logged_in?
+    end
     
     def show?
-        true
+        if record.status == 'public'
+            return true
+        end
+
+        author? || admin?
     end
     
     def update?
-        author?
+        author? || admin?
     end
 
     def destroy?
-        author?
+        author? || admin?
     end
 
     def create?

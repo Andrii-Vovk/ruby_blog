@@ -5,6 +5,8 @@ class ArticlesController < ApplicationController
   def index
     authorize Article
     @articles = Article.article_status('public').ordered.including_authors
+  
+    @articles = @articles.where('title LIKE ?', "#{params[:query]}%")
   end
 
   def show
@@ -61,6 +63,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def archived
+    authorize Article
+    @articles = current_user.admin? ? Article.all : current_user.articles
+    @articles = @articles.article_status('archived').ordered.including_authors
+  end
 
   private
     def article_params
@@ -71,3 +78,4 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 end
+
