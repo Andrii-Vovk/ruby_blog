@@ -1,35 +1,30 @@
-  <div class="row" style="width: 85%; margin: auto">
+  
+<div class="container" >
+  <div class="row">
     <% articles.each do |article| %>
-    <div class="col-sm-3">
-      <div class="card text-black bg-light mb-3" style="width: 18rem;">
-          
-        <% if article.top_photo.attached?%>
-        <img src="<%= url_for(article.top_photo)%>">
-        <% end %>
-
-        <div class="card-body">
-          <%= link_to article.title, article, :class => "card-title" %>
-
-          <br />
-
-          <small> <i> <%= time_ago_in_words(article.created_at)%> ago </i> </small>
-
-          <br />
-
-          <small> <i> #<%= article.tag %> </i> </small>
-
-          <br />
-      <div class="card-text">
-          <%= article.body[0..150].gsub(/\s\w+\s*$/, '...') %>
-      </div>
-          <br />
-
-          <% if policy(article).update? %>
-            <%= link_to "Edit", edit_article_path(article) %>
-            <%= link_to "Destroy", article_path(article), method: :delete %>
+      <div class="col-sm">
+        <div class="card text-black bg-light mb-3" style="width: 18rem;">
+          <% if article.top_photo.attached?%>
+            <img class="img-fluid" style="max-width: 100%; height: auto" src="<%= url_for(article.top_photo)%>">
           <% end %>
+          <div class="card-body">
+            <%= link_to article.title, article, :class => "card-title" %>
+            <br />
+            <small> <i> <%= time_ago_in_words(article.created_at)%> ago </i> </small>
+            <br />
+            <small> <i> #<%= article.tag %> </i> </small>
+            <br />
+            <div class="card-text">
+              <%= article.body[0..150].gsub(/\s\w+\s*$/, '...') %>
+            </div>
+            <br />
+            <% if policy(article).update? %>
+              <%= link_to "Edit", edit_article_path(article) %>
+              <%= link_to "Delete", article_path(article), method: :delete %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
     <% end %>
+  </div>
 </div>
