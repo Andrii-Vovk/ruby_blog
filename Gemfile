@@ -62,4 +62,4 @@ gem 'pundit'
 
 gem 'aws-sdk-s3'
 
-#gem 'pg'
+gem 'pg'
