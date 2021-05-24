@@ -30,7 +30,7 @@
 
 ### 1. Getting started.
 
-I think this is pretty self-explanatory. Just reproduced the steps from rails official cite guide.
+I think this is pretty self-explanatory. Just reproduced the steps from rails official site guide.
 
 ### 2. Authentification.
 
