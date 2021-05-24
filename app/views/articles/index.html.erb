@@ -19,13 +19,14 @@ Our blog has <%= Article.public_count %> articles and counting!
 
 
 
+<div class="form-group">
 <%= form_with method: :get do |form| %>
   <%= form.label :tag_query, "Filter by tag:" %>
-  <%= form.select :tag_query, Article.distinct.pluck(:tag).sort %>
-  <%= form.submit "Filter" %>
+  <%= form.select :tag_query, Article.distinct.pluck(:tag).sort, {:class => "form-control"} %>
+  <%= form.submit "Filter"%>
+  <%= button_to("clear", root_url, method: :get) %>
 <% end %>
-  <%= button_to "clear", root_url, :method => "get"%>
-
+</div>
 <%= form_with method: :get do |form| %>
 <% end %>
  

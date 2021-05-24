@@ -3,7 +3,7 @@
     <%= form.label :title %><br>
     <%= form.text_field :title %>
     <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
     <% end %>
   </div>
 
@@ -11,7 +11,7 @@
     <%= form.label :body %><br>
     <%= form.text_area :body %><br>
     <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
     <% end %>
   </div>
 
@@ -19,7 +19,7 @@
     <%= form.label :tag %><br>
     <%= form.text_field :tag %>
     <% article.errors.full_messages_for(:tag).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
     <% end %>
   </div>
 
@@ -27,16 +27,16 @@
   <%= form.label "Header photo" %>
   <%= form.file_field :top_photo%>
   <% article.errors.full_messages_for(:top_photo).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
   <% end %>
   </div>
 
   <div>
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'archived']%>
-  </div>
+  </div style="color: red">
 
   <div>
     <%= form.submit %>
-  </div>
+  </div style="color: red">
 <% end %>

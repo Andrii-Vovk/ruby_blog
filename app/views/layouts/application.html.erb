@@ -8,24 +8,30 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   </head>
 
   <body>
-  <header>
-    <br />
-    <br />
+  <nav class="navbar navbar-dark bg-dark">
     <% if user_signed_in? %>
-      <%= render 'username', u: current_user %> |
+    <span style="color: #E97172"> Rubypedia </span>
+    <span style="color: white">
+      [<%= render 'username', u: current_user %>]
+    </span>
       <%= link_to "Log out", destroy_user_session_path,
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>
     <% else %>
     <%= link_to "Log in", new_user_session_path %>
     <% end %>
-  </header>
+  
+  </nav>
 
-  <p id="notice"><%= notice %></p>
-  <p id="alert"><%= alert %></p>
+  <p style="color: green" id="notice"><%= notice %></p>
+  <p style="color: red" id="alert"><%= alert %></p>
 
     <%= yield %>
   </body>
