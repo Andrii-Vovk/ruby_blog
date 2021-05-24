@@ -34,7 +34,7 @@ I think this is pretty self-explanatory. Just reproduced the steps from rails of
 
 ### 2. Authentification.
 
-This feature was implementet using "devise" gem. Pretty much all actions use its "authenticate_user!" before_action, so you will not be able to do anything without being redirected to devise sign_in views.
+This feature was implemented using "devise" gem. Pretty much all actions use its "authenticate_user!" before_action, so you will not be able to do anything without being redirected to devise sign_in views.
 
 ### 3. Authorization (+ admin mode).
 
