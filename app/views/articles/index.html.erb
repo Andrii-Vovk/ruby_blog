@@ -17,10 +17,16 @@ Our blog has <%= Article.public_count %> articles and counting!
   <%= form.submit "Search" %>
 <% end %>
 
+
+
 <%= form_with method: :get do |form| %>
   <%= form.label :tag_query, "Filter by tag:" %>
-  <%= form.text_field :tag_query %>
+  <%= form.select :tag_query, Article.distinct.pluck(:tag).sort %>
   <%= form.submit "Filter" %>
+<% end %>
+  <%= button_to "clear", root_url, :method => "get"%>
+
+<%= form_with method: :get do |form| %>
 <% end %>
  
 <%= render 'articles', articles: @articles %>

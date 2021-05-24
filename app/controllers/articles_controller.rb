@@ -11,8 +11,8 @@ class ArticlesController < ApplicationController
       @articles = @articles.search(params[:query])
     end
 
-    if params[:tquery].present?
-      @articles = @articles.tag_filter(params[:tquery])
+    if params[:tag_query].present?
+      @articles = @articles.tag_filter(params[:tag_query])
     end
 
     @pagy, @articles = pagy(@articles)
