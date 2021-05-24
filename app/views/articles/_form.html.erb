@@ -1,42 +1,48 @@
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+
+  
+  <div class="form-group" style="width: 60%; margin: auto">
+    <%= form.label :title %>
+    <%= form.text_field :title, :class =>"form-control"%>
     <% article.errors.full_messages_for(:title).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
-  </div>
+</div>
 
-  <div>
+
+    <div class="form-group" style="width: 60%; margin: auto">
     <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+    <%= form.text_area :body, :class =>"form-control" %><br>
     <% article.errors.full_messages_for(:body).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
-  </div>
+ </div>
 
-  <div>
+
+  <div class="form-group" style="width: 60%; margin: auto">
     <%= form.label :tag %><br>
-    <%= form.text_field :tag %>
+    <%= form.text_field :tag, :class =>"form-control" %>
     <% article.errors.full_messages_for(:tag).each do |message| %>
       <div style="color: red"><%= message %></div>
     <% end %>
-  </div>
+ </div>
 
-  <div> 
+  <div class="form-group" style="width: 60%; margin: auto">
   <%= form.label "Header photo" %>
-  <%= form.file_field :top_photo%>
+  <%= form.file_field :top_photo, :class =>"form-control"%>
   <% article.errors.full_messages_for(:top_photo).each do |message| %>
       <div style="color: red"><%= message %></div>
   <% end %>
-  </div>
+ </div>
 
-  <div>
+  
+    <div class="form-group" style="width: 60%; margin: auto">
+
     <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'archived']%>
-  </div style="color: red">
+    <%= form.select :status, ['public', 'archived'], {}, :class =>"form-select"%>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div style="color: red">
+    <div class="form-group" style="width: 60%; margin: auto; margin-top: 10px">
+    <%= form.submit "Create new post", :class => "btn btn-primary" %>
+    </div>
 <% end %>

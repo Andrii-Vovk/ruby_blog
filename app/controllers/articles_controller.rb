@@ -76,6 +76,7 @@ class ArticlesController < ApplicationController
     authorize Article
     @articles = current_user.admin? ? Article.all : current_user.articles
     @articles = @articles.article_status('archived').ordered.including_authors
+    @pagy, @articles = pagy(@articles)
   end
 
   private

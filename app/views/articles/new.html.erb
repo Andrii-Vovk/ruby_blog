@@ -1,3 +1,6 @@
-<h1>New Article</h1>
-<%= link_to "Back", root_path %>
+<div class="p-5 text-center bg-light">
+  <h1 class="mb-3" >New Article</h1>
+  <h3 class="Roboto"><%= link_to "Back", root_path %></h3>
+</div>
+
 <%= render "form", article: @article %>

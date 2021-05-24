@@ -1,19 +1,20 @@
 <% unless comment.body == nil %>
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.author.username %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-
-<% if policy(@article).destroy? %>
-  <p>
-    <%= link_to 'Destroy Comment', [comment.article, comment],
+  <div style="width: 60%; margin: auto">
+    <div class="coment-bottom bg-white p-2 px-4">
+      <div class="commented-section mt-2">
+        <div class="d-flex flex-row align-items-center commented-user">
+          <h5 class="mr-2"><%= render 'username', u: comment.author %></h5>
+          <span class="dot mb-1"></span>
+          <span class="mb-1 ml-2"><%= time_ago_in_words(comment.created_at)%> ago</span>
+          <span class="mb-1 ml-2"><% if policy(@article).destroy? %>
+              <%= link_to 'Delete comment', [comment.article, comment],
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
-  </p>
-  <% end %>
+            <% end %></span>
+        </div>
+        <div class="comment-text-sm"><span><%= comment.body %></span></div>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>

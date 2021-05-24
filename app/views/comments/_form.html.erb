@@ -1,13 +1,7 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-
-  <%= form.hidden_field :status, :value => 'public' %>
-
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="d-flex flex-row add-comment-section mt-4 mb-4 text-center" style="width: 60%; margin: auto">
+    <%= form.text_field :body, {:class => "form-control mr-3", :placeholder => "Add comment"} %>
+    <%= form.hidden_field :status, :value => 'public' %>
+    <%= form.submit "Comment", :class => "btn btn-primary" %>
+  </div>
 <% end %>

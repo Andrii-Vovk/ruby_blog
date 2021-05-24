@@ -1,36 +1,33 @@
-<h1>Articles 
-<% if policy(Article).archived? %>
-| <%= link_to 'Archive', archived_articles_path%> 
-| <%= link_to "New Article", new_article_path %>
-<% end %>
-</h1>
-
-<div>
-Our blog has <%= Article.public_count %> articles and counting!
+<div class="p-5 text-center bg-light">
+  <h1 class="mb-3" >Articles</h1>
+  <h3 class="Roboto"> <% if policy(Article).archived? %>
+ <%= link_to 'Archive', archived_articles_path%> | <%= link_to "New Article", new_article_path %>
+<% end %></h3>
+  <h4 class="Roboto"> Our blog has <%= Article.public_count %> articles and counting! </h4>
 </div>
 
-<br />
+
 
 <%= form_with method: :get do |form| %>
-  <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
+<div class="d-flex flex-row add-comment-section mt-4 mb-4 text-center" style="width: 60%; margin: auto">
+    <%= form.text_field :query, {:class => "form-control mr-3", :placeholder => "Search"} %>
+    <%= form.submit "Search", :class => "btn btn-primary" %>
+  </div>
 <% end %>
 
 
-
-<div class="form-group">
 <%= form_with method: :get do |form| %>
-  <%= form.label :tag_query, "Filter by tag:" %>
-  <%= form.select :tag_query, Article.distinct.pluck(:tag).sort, {:class => "form-control"} %>
-  <%= form.submit "Filter"%>
-  <%= button_to("clear", root_url, method: :get) %>
+<div class="d-flex flex-row add-comment-section mt-4 mb-4 text-center" style="width: 60%; margin: auto">
+    <%= form.select :tag_query, Article.distinct.pluck(:tag).sort, {}, {:class => "form-select"} %>
+    <%= form.submit "Filter", :class => "btn btn-primary lmargin" %>
+  </div>
 <% end %>
+
+<div class="d-flex flex-row add-comment-section mt-4 mb-4 text-center" style="width: 60%; margin: auto">
+  <%= button_to("Clear all search filters", root_url, method: :get, :class => "btn btn-primary form-control") %>
 </div>
-<%= form_with method: :get do |form| %>
-<% end %>
- 
 <%= render 'articles', articles: @articles %>
 
-<%== pagy_bootstrap_nav(@pagy)%>
-
+<div class="d-flex justify-content-center", style="margin-bottom: 30px">
+  <%== pagy_bootstrap_nav(@pagy)%>
+</div>

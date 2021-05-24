@@ -1,4 +1,14 @@
-<h1>Archive | <%= link_to 'Articles', articles_path%></h1>
- 
+<div class="p-5 text-center bg-light">
+  <h1 class="mb-3" >Archive</h1>
+  <h3 class="Roboto"> <% if policy(Article).archived? %>
+ <%= link_to 'Articles', articles_path%> | <%= link_to "New Article", new_article_path %>
+<% end %></h3>
+</div>
+
 <%= render 'articles', articles: @articles %>
+
+<div class="d-flex justify-content-center", style="margin-bottom: 30px">
+  <%== pagy_bootstrap_nav(@pagy)%>
+</div>
+
 
