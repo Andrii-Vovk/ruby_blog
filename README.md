@@ -66,7 +66,7 @@ Every post has a "tag" field. A select box on main page gets all unique sorted t
 
 ### 7. Pagination.
 
-Pagination is implemented using ["pagy" gem](https://github.com/ddnexus/pagy)
+Pagination is implemented using ["pagy" gem](https://github.com/ddnexus/pagy). It is kept at 4 items per page for demonstraiton sake.
 
 ### 8. Uploading pictures (+ AWS S3 bucket image storing)
 
