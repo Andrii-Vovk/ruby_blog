@@ -1,5 +1,7 @@
 # README
 
+> This is a UNIVERSITY ASSIGNMENT! Do not treat as production-ready code.
+
 ## Hello! this is the guide to my <% rubypedia %>!
 
 ## The app is deployed to [Heroku](https://rubypediaapp.herokuapp.com/?).
