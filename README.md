@@ -1,6 +1,6 @@
-# README
+# !!!__This is a UNIVERSITY ASSIGNMENT! Do not treat as production-ready code.__
 
-> This is a UNIVERSITY ASSIGNMENT! Do not treat as production-ready code.
+# README
 
 ## Hello! this is the guide to my <% rubypedia %>!
 
@@ -27,7 +27,7 @@
 
 * heroku deployment
 
-* some basic bootstrap styling (if you can call it a "feature" :) ) 
+* some basic bootstrap styling
 ## Details about each feature
 
 ### 1. Getting started.
