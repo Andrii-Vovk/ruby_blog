@@ -11,7 +11,7 @@
 
 * getting started
 
-* authentification
+* authentication
 
 * authorization (+ admin mode)
 
